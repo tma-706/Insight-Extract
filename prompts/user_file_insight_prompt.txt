@@ -1,0 +1,86 @@
+Please extract Key Insights relevant to the query from the following web search results.
+
+Query Task
+{query}
+
+Important Notes (Web Search Results)
+
+You are processing web search results. These sources contain key information needed to answer the query. Please extract the core information provided by each source.
+
+Core Principle
+
+Source Specificity: Extract information that is unique and specific to each web page, NOT common knowledge or generic statements.
+
+Extraction Requirements
+
+1. Source Specificity (MOST IMPORTANT):
+
+- Extract specific information unique to this source, such as: specific names, dates, data, events, product names, company names, project names, method names, etc.
+- Extract unique viewpoints, conclusions, methods, or findings from this source.
+- DO NOT extract common knowledge, such as: "AI can improve efficiency", "data analysis is important", "user experience matters".
+- DO NOT extract generic descriptions, such as: "this method works well", "performance improved", "solved the problem".
+
+2. Source Contribution:
+
+Extract the main contribution of each source to answering the query, such as:
+
+- Methods, techniques, or concepts introduced by the source (e.g., "proposes AfME embedding", "uses MCMC optimization").
+- Core topics or problems discussed by the source.
+- Key conclusions or findings of the source.
+- Note: No need to extract precise numbers (e.g., "19.86% improvement"), just extract core concepts (e.g., "significant PSNR improvement").
+
+3. Relevance:
+
+Information must be relevant to the query task.
+
+4. Verifiability:
+
+It should be possible to determine whether the report mentions this information. Semantic similarity is sufficient; exact match is not required.
+
+5. Atomicity:
+
+Each insight must be atomic, containing only 1-12 words and expressing a simple fact or concept.
+
+Examples of Common Knowledge (DO NOT Extract)
+
+- "Machine learning requires large amounts of data" -> This is common knowledge.
+- "User experience is important" -> This is common knowledge.
+- "This method improved accuracy" -> Too vague, no specific value or comparison.
+- "Further research is needed" -> This is a generic conclusion.
+
+Examples of Source-Specific Content (SHOULD Extract)
+
+- "Uses ResNet-50 as backbone network" -> Specific technical choice.
+- "Achieves 92.3% accuracy on ImageNet" -> Specific data.
+- "Proposed by John Smith in January 2024" -> Specific name and time.
+- "Employs AfME embedding method" -> Specific method name.
+
+Quantity Control
+
+- Extract 1-2 core insights per source (web page).
+- Ensure each source has corresponding insights.
+- Prioritize conceptual information over precise numbers.
+- If a source lacks specific information, extract fewer insights rather than extracting common knowledge.
+
+Language Requirement
+
+Important: Output insights must be in English.
+
+Output Format
+
+Please output insights in JSON array format. Each insight should include the source title:
+
+[
+  {
+    "insight": "Brief source-specific information point (1-12 words)",
+    "source": "Source Title"
+  }
+]
+
+Only output the JSON array, no other content.
+
+Source Title
+{source_name}
+
+Source Content
+{content_text}
