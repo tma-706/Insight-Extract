@@ -1,0 +1,92 @@
+Extract atomic evaluation requirements from the following query.
+Each requirement must be short, specific, and independently verifiable.
+
+Query:
+{query}
+
+Rules:
+
+1. Atomic Decomposition:
+Break down complex requirements into minimal, independent checkpoints.
+
+- Each requirement checks only one specific point.
+- Example: "Analyze aspects A, B, and C"
+  -> Split into "Mention A", "Mention B", "Mention C".
+- Example: "Compare X and Y"
+  -> Split into "Describe X", "Describe Y", "Explain differences".
+
+2. Short and Clear:
+Each requirement should be one sentence, no more than 10 words.
+
+- Bad:
+  "Based on the uploaded innovation theory article and e-commerce
+  comparison chart, analyze Temu's business model"
+- Good:
+  "Mention innovation theory"
+  "Cite e-commerce data"
+  "Analyze Temu model"
+
+3. Independently Verifiable:
+Each requirement can be judged individually (yes/no).
+
+- Bad:
+  "Deeply analyze multiple dimensions of the business model"
+- Good:
+  "Mention value proposition"
+  "Mention revenue sources"
+  "Mention cost structure"
+
+4. Cover Implicit Requirements:
+Extract implicit checkpoints from the query.
+
+- If "compare" is mentioned:
+  Need "Describe A", "Describe B", "Explain differences".
+- If "determine whether" is mentioned:
+  Need "Provide evidence", "Draw conclusion".
+- If "refer to article" is mentioned:
+  Need "Cite article content".
+
+5. Quantity Target:
+A query should typically have 8-15 atomic requirements.
+
+- Simple query: 8-10 items
+- Medium query: 10-12 items
+- Complex query: 12-15 items
+- Keep moderate granularity, not too few or too many.
+
+6. Categories:
+
+- content: Mention a specific content point
+- evidence: Cite a material/data source
+- analysis: Perform some analysis
+- comparison: Make a comparison
+- conclusion: Draw a conclusion
+
+7. Format Requirements:
+
+- Start with verbs:
+  "Mention", "Cite", "Analyze", "Compare", "Explain", "Describe".
+- Avoid compound sentences, one thing per item.
+- Each item no more than 10 words.
+
+Output JSON:
+
+{
+  "checklist": [
+    {
+      "id": 1,
+      "requirement": "Mention X",
+      "category": "content"
+    },
+    {
+      "id": 2,
+      "requirement": "Cite Y data",
+      "category": "evidence"
+    },
+    {
+      "id": 3,
+      "requirement": "Analyze Z features",
+      "category": "analysis"
+    }
+  ]
+}

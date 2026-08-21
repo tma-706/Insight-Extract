@@ -80,3 +80,25 @@ text/vision/hybrid path, chunking và trạng thái từng source. JSON được
 response lỗi format/schema, pipeline chỉ yêu cầu model repair đúng một lần và không tự
 bịa insight local. Lỗi một source được log và các source/task còn lại vẫn tiếp tục.
 
+## Sinh checklist Instruction Following
+
+Checklist pipeline độc lập chỉ đọc `data/<task>/query.txt`; nó không đọc
+`user_files/`, generated insights hay nguồn bên ngoài. Kiểm tra prompt/query mà không
+gọi API hoặc ghi output:
+
+```powershell
+python generate_checklists.py --task 008 --validate-only
+python generate_checklists.py --all --validate-only
+```
+
+Sinh checklist cho một task hoặc toàn bộ task:
+
+```powershell
+python generate_checklists.py --task 008
+python generate_checklists.py --all
+```
+
+Mỗi task ghi `checklist.json`, `checklist_metadata.json` và raw response tại
+`raw/checklist_raw.txt`. Nếu JSON cần model repair, response repair được lưu riêng tại
+`raw/checklist_repair_raw.txt`. `checklist.json` là machine-generated candidate và phải
+được human review trước khi dùng làm checklist IF chính thức.
